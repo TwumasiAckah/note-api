@@ -79,22 +79,22 @@ jobs:
       - name: Set up Docker
         run: |
           echo "Setting up Docker..."
-          gcloud auth configure-docker europe-west3-docker.pkg.dev --quiet
+          gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
 
       - name: Build Docker image
         run: |
-          docker build -t europe-west3-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api/main:latest .
+          docker build -t us-central1-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api/main:latest .
 
       - name: Push image to Artifact Registry
         run: |
-          docker tag europe-west3-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api/main:latest \
-            europe-west3-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest
-          docker push europe-west3-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest
+          docker tag us-central1-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api/main:latest \
+            us-central1-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest
+          docker push us-central1-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: "note-api-hs-heilbronn-devsecops-0xt00mcr00se"
-          image: "europe-west3-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest"
-          region: "europe-west3"
+          image: "us-central1-docker.pkg.dev/hs-heilbronn-devsecops/cloud-run-source-deploy/note-api-hs-heilbronn-devsecops-0xt00mcr00se/note-api/main:latest"
+          region: "us-central1"
           env_vars: BACKEND=memory
