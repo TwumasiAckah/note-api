@@ -8,3 +8,4 @@ opentelemetry-api
 opentelemetry-sdk
 opentelemetry-exporter-gcp-trace
 opentelemetry-instrumentation-fastapi
+setuptools>=78.1.1 # not directly required, pinned by Snyk to avoid a vulnerability
