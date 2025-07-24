@@ -8,3 +8,4 @@ opentelemetry-api
 opentelemetry-sdk
 opentelemetry-exporter-gcp-trace
 opentelemetry-instrumentation-fastapi
+starlette>=0.47.2 # not directly required, pinned by Snyk to avoid a vulnerability
